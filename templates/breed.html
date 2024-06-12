@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Cat Breed Classifier</title>
+</head>
+<body>
+    <h1>Cat Breed Classifier</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Predict">
+    </form>
+    <br>
+    <p>{{ prediction }}</p>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cat Breed Classifier</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f0f0f0;">
+    <div class="container">
+        <h1 class="mt-5 mb-4">Cat Breed Classifier</h1>
+		<h2>"Time spent with cats is never wasted." - Sigmund Freud</h2>
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload an Image</label>
+                <input type="file" class="form-control" name="file" id="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <br>
+        <p class="mt-4">Predicted Cat Breed: {{ predicted_breed }}</p>
+
+        {% if cat_image %}
+        <img src="data:image/jpeg;base64,{{ cat_image }}" alt="Uploaded Image" class="img-fluid mt-4" width="300">
+        {% endif %}
+		
+		
+    </div>
+	
+
+
+    <!-- Include Bootstrap JS (optional, but required for some features) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

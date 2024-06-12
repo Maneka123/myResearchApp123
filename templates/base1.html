@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/stethoscope.png') }}" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+  
+
+  {% block head %}
+
+  {% endblock %}
+</head>
+
+<body>
+
+  <!-- Spinner -->
+
+  <div id="loading">
+    <div class="spinner-border text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
+
+  <!-- Navigation Bar-->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand p-0 me-2" href="./" aria-label="TRUSTYPET">
+        <img src="{{ url_for('static', filename='img/stethoscope.png') }}" width="40" height="35" class="img-fluid">
+        </img>
+      </a>
+      <a class="navbar-brand" href="./">Trustypet</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('chat_bot') }}">Disease</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{{ url_for('chat_bot') }}">Breed</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./contact">Contact us</a>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+              </form> -->
+        {% if "email" not in session %}
+        <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#signupModal">Sign
+          up</button>
+        {% else %}
+        <a href="/dashboard" class="btn btn-outline-warning" role="button">Dashboard</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatCare Companion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        header img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        footer button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        footer button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to TrustyPet , your <strong>CatCare Companion</strong>!</h1>
+        <img src="{{ url_for('static', filename='cat1.jpeg') }}" alt="Illustration of a Friendly Cat">
+    </header>
+    <main>
+       <section id="symptom-checker">
+    <h2>Symptom Checker</h2>
+    <p>Enter your cat's symptoms into our chatbot and receive predictions for potential diseases, providing valuable insights for proactive care.</p>
+    
+</section>
+
+<section id="clinic-checker">
+    <h2>Vet Clinics Within 2km</h2>
+    <p>Find nearby veterinary clinics within a 2 km radius to ensure quick access to professional care when needed.</p>
+    
+</section>
+
+<section id="breed-prediction">
+    <h2>Breed Prediction</h2>
+    <p>Discover your cat's likely breed based on distinctive characteristics, unlocking fascinating insights into their ancestry.</p>
+    
+</section>
+
+<section id="age-estimation">
+    <h2>Age Estimation</h2>
+    <p>Gain a better understanding of your cat's age with our age estimation feature, tailored to feline physiology.</p>
+    
+</section>
+
+<section id="gender-recognition">
+    <h2>Gender Recognition</h2>
+    <p>Learn more about your cat's gender with our gender recognition tool, enhancing your understanding of their unique needs.</p>
+  
+</section>
+
+<section id="stamina-assessment">
+    <h2>Stamina Assessment</h2>
+    <p>Assess your cat's stamina level to tailor exercise routines and ensure optimal fitness and well-being.</p>
+    
+</section>
+
+<section id="emotion-analysis">
+    <h2>Emotion Analysis</h2>
+    <p>Explore your cat's emotional state through advanced analysis, fostering deeper connections and empathy.</p>
+    
+</section>
+
+    </main>
+    
+	 
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatCare Companion - Domain</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #domain {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        #domain h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #domain div {
+            margin-bottom: 20px;
+        }
+        #domain h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #domain p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+		.literature-review {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            border: 2px solid #007bff; /* Add border around the box */
+        }
+
+        .literature-review p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+		 .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .tool {
+            text-align: center;
+        }
+        .tool img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+		.section-background {
+            background-color: lightblue; /* You can change the color here */
+            padding: 20px; /* Adding padding for better readability */
+        }
+		
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Your header content -->
+    </header>
+    <main>
+        <section id="domain"  class="section-background">> 
+		<div class="container">
+            <h2 style="text-align: center;">Domain</h2>
+
+            <div class="literature-review" style="background-color: lightgreen;">
+                <h3>Literature Survey</h3>
+                <p>The literature survey reveals significant advancements in utilizing deep learning technologies, particularly convolutional neural networks (CNNs) and deep convolutional neural networks (DCNNs), across various domains related to pet care and animal welfare. These advancements include the development of feline image analytics systems capable of predicting key attributes like breed, age, gender, stamina, and emotion, as well as robust age and gender classification of unfiltered real-world faces. Furthermore, deep learning frameworks have been effectively employed for accurate classification of dog and cat breeds using images, while novel approaches, such as pet sentiment analysis and facial expression recognition in animals, demonstrate substantial improvements in accuracy compared to traditional methods. Challenges in dermatology diagnosis have been addressed with the introduction of deep convolutional neural networks (DCNNs) for skin disease detection, and innovative methodologies combining CNNs and vision transformers have been proposed for precise classification of a dog's age based on facial images. Overall, this comprehensive literature review underscores the significance of deep learning techniques in advancing the understanding and application of computer vision in pet care and animal welfare, while also highlighting areas for further research and development.</p>
+            </div>
+            <div class="literature-review"  style="background-color: lightgreen;">
+                <h3>Research Gap</h3>
+                <p>In recent years, significant progress has been made in feline analysis through the utilization of deep learning methods, focusing on areas such as cat breed prediction, wellness monitoring, gender identification, age estimation, and emotion recognition. However, there remains a notable research gap in the comprehensive analysis of multiple aspects of cats using deep learning techniques. While some studies have addressed individual attributes, such as breed or wellness condition prediction, few have simultaneously predicted multiple attributes like breed, gender, age, and emotion from photos or relevant data sources. This gap presents an opportunity for further exploration and investigation, with the potential to develop holistic models integrating various aspects of feline analysis. Such models could offer valuable insights for pet owners, veterinarians, and researchers, leading to improved care and management strategies for feline companions. By filling this research gap, researchers can enhance feline analytic techniques and develop more thorough instruments for evaluating and tracking cats' well-being. Additionally, exploring the relationships between different characteristics may unveil essential information about the complex dynamics of feline behavior and wellness.</p>
+            </div>
+            <div class="literature-review"  style="background-color: lightgreen;">
+                <h3>Research Problem</h3>
+                <p>The specific problem our research aims to address is the lack of comprehensive analysis tools for multiple aspects of feline health and behavior using deep learning methods. While individual studies have made strides in predicting specific attributes such as cat breed, wellness condition, gender, age, and emotion, there is a notable absence of integrated models capable of simultaneously analyzing these various aspects. This gap hinders the development of holistic approaches to understanding and managing feline health and behavior. Therefore, our research seeks to bridge this gap by developing a comprehensive model that can predict multiple attributes of cats using deep learning techniques, thereby providing valuable insights for pet owners, veterinarians, and researchers to improve the care and management of feline companions.</p>
+            </div>
+            <div class="literature-review"  style="background-color: lightgreen;">
+                <h3>Research Objectives</h3>
+                <p>The objectives of our research are to develop a comprehensive deep learning model capable of simultaneously predicting multiple attributes of cats, including breed, gender, age, wellness condition, and emotion, from photos or relevant data sources. This involves collecting and curating a diverse dataset, implementing and optimizing deep learning architectures, conducting thorough experimentation and evaluation, investigating practical applications in pet care and veterinary medicine, and disseminating research findings to contribute to the advancement of feline analytics and promote further research in this domain.</p>
+            </div>
+            <div class="literature-review"  style="background-color: lightgreen;">
+                <h3>Methodology</h3>
+                <p>The methodology for our research involved several key steps. First, we collected and curated a diverse dataset of cat images along with associated metadata, ensuring representation across various breeds, ages, genders, wellness states, and emotional expressions. Next, we preprocessed the data to standardize image sizes, remove noise, and extract relevant features. Then, we designed and implemented deep learning architectures, such as convolutional neural networks (CNNs) and deep convolutional neural networks (DCNNs), to train the model on the collected dataset. We employed transfer learning techniques and fine-tuning to leverage pre-trained models and optimize performance. Thorough experimentation was conducted to evaluate the model's accuracy and robustness in predicting multiple cat attributes. We used standard evaluation metrics and benchmarks to assess performance. Additionally, we explored the model's practical applications in pet care, veterinary medicine, and research settings through case studies and real-world scenarios. Throughout the research process, documentation of methodologies, experiments, and findings was maintained to ensure reproducibility and transparency. Finally, we disseminated our research findings through publications, presentations, and open-access resources to contribute to the advancement of feline analytics and foster further research in this area.</p>
+            </div>
+            <div class="literature-review" style="background-color: lightgreen;">
+                <h3>Technologies Used</h3>
+			<div class="tools-container">
+        <div class="tool">
+    <img src="{{ url_for('static', filename='tool1.jpeg') }}" alt="EfficientNet B0">
+    <p>EfficientNet B0</p>
+</div>
+<div class="tool">
+    <img src="{{ url_for('static', filename='tool1.jpeg') }}" alt="Inception V3">
+    <p>Inception V3</p>
+</div>
+<div class="tool">
+    <img src="{{ url_for('static', filename='tool1.jpeg') }}" alt="MobileNet V2">
+    <p>MobileNet V2</p>
+</div>
+<div class="tool">
+    <img src="{{ url_for('static', filename='tool1.jpeg') }}" alt="ResNet50">
+    <p>ResNet50</p>
+</div>
+
+        <div class="tool">
+             <img src="{{ url_for('static', filename='flask.png') }}" alt="Flask">
+            <p>Flask</p>
+        </div>
+        <div class="tool">orFlow">
+             <img src="{{ url_for('static', filename='tensorflow.png') }}" alt="Tensorflow">
+            <p>TensorFlow</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='googleDrive.png') }}" alt="GoogleDrive">
+            <p>Google Drive</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='python.png') }}" alt="Python">
+            <p>Python</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='html.png') }}" alt="HTML">
+            <p>HTML & CSS & JS</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='opencv.png') }}" alt="opencv">
+            <p>OpenCV</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='github.png') }}" alt="Github">
+            <p>GitHub</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='gitlab.png') }}" alt="GitLab">
+            <p>GitLab</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='word.jpeg') }}" alt="MS Word">
+            <p>Microsoft Word</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='ppt.jpeg') }}" alt="MS Powerpoint">
+            <p>Microsoft PowerPoint</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='teams.png') }}" alt="MS Teams">
+            <p>Microsoft Teams</p>
+        </div>
+        <div class="tool">
+             <img src="{{ url_for('static', filename='whatsapp.jpeg') }}" alt="Whatsapp">
+            <p>WhatsApp</p>
+        </div>
+    </div>
+               
+            </div>
+			</div>
+        </section>
+    </main>
+    <footer>
+        <!-- Your footer content -->
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestones</title>
+    <style>
+        .container {
+            text-align: center; /* Center text horizontally */
+            margin-bottom: 20px; /* Add margin to separate from details */
+            background-color: grey;
+            padding: 20px; /* Increase padding */
+            padding-bottom: 100px; /* Set bottom padding */
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px; /* Increase padding */
+            font-size: 16px; /* Increase font size */
+            border: 2px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        #assessment_details {
+            margin-top: 20px;
+        }
+
+        #assessment_details p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Milestones</h2>
+        <label for="milestones">Choose a milestone:</label>
+        <select id="milestones" name="milestones">
+            <option value="project_proposal">Project Proposal</option>
+            <option value="progress_presentation_1">Progress Presentation-1</option>
+            <option value="progress_presentation_2">Progress Presentation-2</option>
+            <option value="final_assessment">Final Assessment</option>
+            <option value="viva">Viva</option>
+        </select>
+		<div id="assessment_details" >
+        <!-- Assessment details will be displayed here based on the selected milestone -->
+    </div>
+    </div>
+    <br><br><br><br>
+
+    <script>
+        document.getElementById('milestones').addEventListener('change', function() {
+            var milestone = this.value;
+            var assessmentDetails = document.getElementById('assessment_details');
+            var details = '';
+
+            switch(milestone) {
+                case 'project_proposal':
+                    details = "<p><strong>Date:</strong>enter date </p>" +
+                              "<p><strong>Marks Allocated:</strong> enter marks</p>" +
+                              "<p><strong>Assessment:</strong> Submission of a detailed project proposal outlining the objectives, methodology, and timeline of the project.</p>";
+                    break;
+                case 'progress_presentation_1':
+                    details = "<p><strong>Date:</strong>enter date</p>" +
+                              "<p><strong>Marks Allocated:</strong> enter marks</p>" +
+                              "<p><strong>Assessment:</strong> Presentation of the progress made in the project, including initial findings, challenges faced, and next steps.</p>";
+                    break;
+                case 'progress_presentation_2':
+                    details = "<p><strong>Date:</strong> enter date</p>" +
+                              "<p><strong>Marks Allocated:</strong>enter marks</p>" +
+                              "<p><strong>Assessment:</strong> Presentation of the continued progress in the project, addressing feedback from the first presentation, and outlining final steps towards completion.</p>";
+                    break;
+                case 'final_assessment':
+                    details = "<p><strong>Date:</strong> enter date</p>" +
+                              "<p><strong>Marks Allocated:</strong>enter marks</p>" +
+                              "<p><strong>Assessment:</strong> Evaluation of the final project deliverables, including code, documentation, and presentation.</p>";
+                    break;
+                case 'viva':
+                    details = "<p><strong>Date:</strong> enter date</p>" +
+                              "<p><strong>Marks Allocated:</strong>enter marks</p>" +
+                              "<p><strong>Assessment:</strong> Oral examination of the project, including questions on methodology, findings, and contributions.</p>";
+                    break;
+                default:
+                    details = "<p>Please select a milestone.</p>";
+            }
+
+            assessmentDetails.innerHTML = details;
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .bdy1 {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			
+        }
+        .containertwo {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+            width: 80%; /* Adjust the width as needed */
+			
+        }
+        .box {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 45%;
+        }
+        .box ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .box ul li {
+            margin-bottom: 10px;
+        }
+        .box ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .box ul li a:hover {
+            color: #666;
+        }
+        .center {
+            margin: 20px auto;
+            width: 80%; /* Adjust the width as needed */
+        }
+    </style>
+</head>
+<body class="bdy1">
+<h2 style="text-align: center;">Documents</h2>
+    <div class="containertwo">
+	
+        <div class="box">
+            <h2>Nilki Rathnayaka</h2>
+            <ul>
+                <li><a href="link_to_project_charter_document">Project Charter-</a></li>
+                <li><a href="link_to_proposal_document">Project Proposal-</a></li>
+                <li><a href="link_to_status_document">Status Document-</a></li>
+                <li><a href="link_to_final_document_1">Final Document 1-</a></li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>Maneka Wijesundara</h2>
+            <ul>
+                <li><a href="link_to_project_charter_document">Project Charter-IT19980782</a></li>
+                <li><a href="https://drive.google.com/file/d/1jNm3nVWSEoOyT6RA_6mn4HYxdjSmIc-k/view?usp=sharing">Project Proposal-IT19980782</a></li>
+                <li><a href="link_to_status_document">Status Document-IT19980782</a></li>
+                <li><a href="link_to_final_document_1">Final Document 1-IT19980782</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="center">
+        <h2>Final Group Report</h2>
+        <ul>
+            <li><a href="https://drive.google.com/file/d/19auoVU4mcXhwLvpmeZbZp0kIBcr1na64/view?usp=sharing">Group Final Report</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .containerthree {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .box {
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: inline-block;
+        }
+        .box ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .box ul li {
+            margin-bottom: 10px;
+        }
+        .box ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .box ul li a:hover {
+            color: #666;
+        }
+    </style>
+</head>
+<body><br><br><br>
+<h2 style="text-align: center;">Presentation Slides</h2>
+    <div class="containerthree">
+        <div class="box">
+            <ul>
+                <li><a href="link_to_proposal_presentation">Proposal Presentation</a></li>
+                <li><a href="link_to_progress_presentation_1">Progress Presentation-1</a></li>
+                <li><a href="https://docs.google.com/presentation/d/1v0hEUZ4n9HpVp-X3o5HTlN0u6Lpf0Fp2/edit#slide=id.p1">Progress Presentation-2</a></li>
+                <li><a href="link_to_final_presentation">Final Presentation</a></li>
+            </ul>
+        </div>
+    </div>
+	<footer>
+        <p>Join the CatCare Companion community today and embark on a journey of unparalleled feline care and companionship!</p>
+        <button id="getStartedBtn">Get Started</button>
+    </footer>
+	<script>
+        document.getElementById('getStartedBtn').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+  <!-- Modal Login -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- Modal body -->
+          <form action="/login" method="POST">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="remember" name="remember">
+              <label class="form-check-label" for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Signup -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModalLabel">Create an account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Signup Modal Body -->
+
+          <form action="/signup" method="POST" oninput='password2.setCustomValidity(password.value != password2.value ? "Passwords do not match." : "")'>
+            <div class="row mb-3">
+              <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" name="name" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail" name="email" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" name="password" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword2" name="password2" placeholder="Confirm Password" required>
+              </div>
+            
+            </fieldset>
+            <div class="row mb-3">
+              <div class="col-sm-10 offset-sm-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck1" required>
+                  <label class="form-check-label" for="gridCheck1">
+                    Agree to terms and conditions
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button class="btn btn-danger" type="submit">Sign up</button>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+ 
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    
+       
+
+
+</body>
+
+</html>
+
